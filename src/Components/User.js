@@ -1,4 +1,5 @@
 import { useState } from "react";
+import UserInfo from "./UserInfo";
 
 export default function User(props) {
 
@@ -7,7 +8,8 @@ export default function User(props) {
 
   return (
     <div onClick={() => setShowInfo(true)} className="flex justify-between items-center shadow-md bg-slate-300 border-b border-slate-800  px-5 py-3 w-1/2 min-w-[520px]">
-      <div className="flex justify-between items-center">
+      <UserInfo user={user} show={showInfo} onClose={() => setShowInfo(false)}/>
+      <div className="flex justify-between items-center cursor-pointer">
         <div className="h-12 w-12 rounded-full mr-4">
           <img src={"./../user_image.jpg"} alt="usre-img"
             className="object-fit rounded-full"
