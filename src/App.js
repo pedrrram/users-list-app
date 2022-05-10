@@ -20,6 +20,10 @@ export default function App() {
     ]))
   }
 
+  function deleteUser(id) {
+    setUsers(prevUsers => prevUsers.filter(usr => usr.id !== id))
+  }
+
   return (
     <div className="App">
       <header className="flex justify-center py-5 text-xl bg-slate-800 font-bold w-full h-full">
@@ -33,7 +37,7 @@ export default function App() {
       <main className="h-screen bg-slate-200 w-full flex justify-center pt-10">
         <div className="w-full max-w-screen-md flex flex-col justify-start items-center divide-y-2">
             {
-              users.length > 0 ? users.map(user => <User key={user.id} user={user} edit={handleEdit}/>) : null
+              users.length > 0 ? users.map(user => <User key={user.id} user={user} edit={handleEdit} delete={deleteUser}/>) : null
             }
         </div>
       </main>
