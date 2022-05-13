@@ -26,7 +26,7 @@ export default function EditUser(props) {
 
   function handleEdit(e) {
     e.preventDefault();
-    usersContext.editUser(user)
+    usersContext.dispatch({type: 'editUser', payload: {edittedUser: user}});
     props.onClose();
   }
   
@@ -34,7 +34,6 @@ export default function EditUser(props) {
     e.stopPropagation();
     props.onClose();
   }
-
 
   return (
     <div className="fixed left-0 top-0 right-0 bottom-0 bg-slate-400/30 flex justify-center items-center" onClick={handleCloseEdit}>

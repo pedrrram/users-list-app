@@ -1,37 +1,16 @@
-import { useState } from "react";
+import { useReducer, useState } from "react";
 import AddUser from "./Components/AddUser";
 import User from "./Components/User";
 import UsersContext from "./Contexts/users";
+import UsersReducer from "./Reducers/usersReducer";
 
 export default function App() {
 
-  const [users, setUsers] = useState([]);
+  const [users, dispatch] = useReducer(UsersReducer, []);
   const [showAddModal, setShowModal] = useState(false);
 
-  function addToUsers(user) {
-    setUsers(prevUsers => ([
-      ...prevUsers, user
-    ]))
-  }
-
-  function editUser(edittedUser) {
-    setUsers(prevUsers => ([
-      ...prevUsers.filter(usr => usr.id !== edittedUser.id),
-      edittedUser
-    ]))
-  }
-
-  function deleteUser(id) {
-    setUsers(prevUsers => prevUsers.filter(usr => usr.id !== id))
-  }
-
   return (
-    <UsersContext.Provider value={{
-      users,
-      addToUsers,
-      editUser,
-      deleteUser,
-    }}>
+    <UsersContext.Provider value={{ dispatch }}>
       <div className="App">
         <header className="flex justify-center py-5 text-xl bg-slate-800 font-bold w-full h-full">
           <nav className="w-full max-w-screen-md flex justify-between items-center">

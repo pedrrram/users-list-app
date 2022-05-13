@@ -11,7 +11,6 @@ export default function User(props) {
 
   const usersContext = useContext(UsersContext);
 
-
   function handleShowInfo(e) {
     e.stopPropagation();
     setShowInfo(true);
@@ -34,7 +33,7 @@ export default function User(props) {
         <span className="text-xl mr-2 font-light">{user.displayName}</span>
       </div>
       <div className="flex justify-between gap-3">
-        <button onClick={() => usersContext.deleteUser(user.id)} className="font-light tracking-wide bg-rose-600 text-sm px-4 py-2 rounded-xl text-white hover:bg-rose-700 transition-colors">delete</button>
+        <button onClick={() => usersContext.dispatch({type: 'deleteUser', payload: {id: user.id}})} className="font-light tracking-wide bg-rose-600 text-sm px-4 py-2 rounded-xl text-white hover:bg-rose-700 transition-colors">delete</button>
         <button onClick={handleEditShow} className="font-light tracking-wide bg-slate-800 text-sm px-4 py-2 rounded-xl text-white hover:bg-slate-900 transition-colors">edit</button>
         {
           showEditUser ? <EditUser user={user} onClose={() => setShowEditUser(false)} /> : null

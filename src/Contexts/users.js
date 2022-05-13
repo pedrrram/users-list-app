@@ -2,9 +2,7 @@ import React from "react";
 
 const usersContext = React.createContext({
   users: [],
-  addToUsers: () => {},
-  editUser: () => {},
-  deleteUser: () => {},
+  dispatch: () => {}
 })
 
 export default usersContext;

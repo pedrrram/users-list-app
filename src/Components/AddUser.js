@@ -31,7 +31,7 @@ export default function AddUser(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    usersContext.addToUsers(user);
+    usersContext.dispatch({type: 'addToUsers', payload: {user}});
     props.onClose();
   }
 
