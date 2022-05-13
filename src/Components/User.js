@@ -1,12 +1,16 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import EditUser from "./EditUser";
 import UserInfo from "./UserInfo";
+import UsersContext from "../Contexts/users";
 
 export default function User(props) {
 
   const user = props.user;
   const [showInfo, setShowInfo] = useState(false);
   const [showEditUser, setShowEditUser] = useState(false);
+
+  const usersContext = useContext(UsersContext);
+
 
   function handleShowInfo(e) {
     e.stopPropagation();
@@ -30,9 +34,11 @@ export default function User(props) {
         <span className="text-xl mr-2 font-light">{user.displayName}</span>
       </div>
       <div className="flex justify-between gap-3">
-        <button onClick={() => props.delete(user.id)} className="font-light tracking-wide bg-rose-600 text-sm px-4 py-2 rounded-xl text-white hover:bg-rose-700 transition-colors">delete</button>
+        <button onClick={() => usersContext.deleteUser(user.id)} className="font-light tracking-wide bg-rose-600 text-sm px-4 py-2 rounded-xl text-white hover:bg-rose-700 transition-colors">delete</button>
         <button onClick={handleEditShow} className="font-light tracking-wide bg-slate-800 text-sm px-4 py-2 rounded-xl text-white hover:bg-slate-900 transition-colors">edit</button>
-        <EditUser user={user} show={showEditUser} onClose={() => setShowEditUser(false)} edit={props.edit}/>
+        {
+          showEditUser ? <EditUser user={user} onClose={() => setShowEditUser(false)} /> : null
+        }
       </div>
     </div>
   );
