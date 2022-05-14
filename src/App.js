@@ -1,7 +1,7 @@
 import { useReducer, useState } from "react";
 import AddUser from "./Components/AddUser";
 import User from "./Components/User";
-import UsersContext from "./Contexts/users";
+import UsersContext from "./Context/usersContext";
 import UsersReducer from "./Reducers/usersReducer";
 
 export default function App() {

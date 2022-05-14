@@ -1,5 +1,5 @@
 import { useEffect, useState, useContext } from "react";
-import UsersContext from "../Contexts/users";
+import UsersContext from "../Context/usersContext";
 
 export default function AddUser(props) {
 
@@ -60,7 +60,7 @@ export default function AddUser(props) {
             <input type="email" value={user.email} onChange={(e) => handleSetUser(e, 'email')} className="outline-none border border-slate-200 rounded-md px-3 py-2 mb-4"/>
             <div>
               <label>want to be admin?</label>
-              <input type="checkbox" value={user.isAdmin} onChange={(e) => setUser(user => ({ ...user, isAdmin: !user.isAdmin }))} className="ml-4 align-middle" />
+              <input type="checkbox" checked={user.isAdmin} onChange={(e) => setUser(user => ({ ...user, isAdmin: !user.isAdmin }))} className="ml-4 align-middle" />
             </div>
             <button className="bg-emerald-500 mt-5 p-3 text-white rounded-2xl shadow-xl">Add</button>
           </form>

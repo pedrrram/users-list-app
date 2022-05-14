@@ -1,7 +1,7 @@
 import { useState, useContext } from "react";
 import EditUser from "./EditUser";
 import UserInfo from "./UserInfo";
-import UsersContext from "../Contexts/users";
+import UsersContext from "../Context/usersContext";
 
 export default function User(props) {
 
